@@ -1,0 +1,48 @@
+<div class="not-found__wrapper" [ngStyle]="{ 'background-image': 'url(./assets/images/backgrounds/' + mode + '-not-found.gif' }">
+    <div class="title-container">
+        <div class="card" [ngClass]="{ 'card-dark': darkModeActive }">
+            <div class="card-header" [ngClass]="{ 'card-header__dark': darkModeActive }">
+                <svg class="back__button" routerLink="" viewBox="0 0 98.5 56" tabindex="0">
+                    <defs>
+                      <style>.a {
+                        fill: #2b244d;
+                      }
+                
+                      .b {
+                        fill: #fff;
+                      }
+                
+                      .b, .c {
+                        stroke: #fff;
+                        stroke-width: 2px;
+                      }
+                
+                      .c {
+                        fill: none;
+                      }
+                
+                      .d {
+                        fill: rgb(0, 0, 0);
+                        font-size: 15px;
+                        font-family: SegoeUI, Segoe UI, sans-serif;
+                        letter-spacing: 0.4em;
+                      }</style>
+                    </defs>
+                    <g transform="translate(0)">
+                      <line class="b" transform="translate(0 24)" x1="80"></line>
+                      <line class="b" transform="translate(0 -2)" x2="26" y1="26"></line>
+                      <line class="c" transform="translate(0 24)" x1="26" y1="27"></line>
+                    </g>
+                </svg>
+                <h1>[ERROR]: 404 - <br>NOT FOUND</h1>
+            </div>
+            <div class="card-inner" [ngClass]="{ 'card-inner__dark': darkModeActive }">
+                <div class="header" [ngClass]="{ 'header-dark': darkModeActive }">Error Info <img src="https://acegif.com/wp-content/uploads/loading-73.gif" width="25"></div>
+                <p>Unfortunately, we could not found page with url <span>{{ url }}</span>.</p>
+                <p>Probably you've inputed incorrect address or page with url <span>{{ url }}</span> have been deleted.</p>
+                <p>Check url address or come back on <a routerLink="">home page.</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="link-container"></div>
+</div>

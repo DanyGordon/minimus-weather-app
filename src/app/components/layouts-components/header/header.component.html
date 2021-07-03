@@ -1,0 +1,46 @@
+<header [ngClass]="{'main__header-dark': darkModeActive}" class="main__header">
+  <div class="left__section">
+    <svg (click)="toggleMenu()" class="hamburger__icon" id="Menu_Burger_Icon" *ngIf="auth">
+      <defs>
+        <style>.hamburger__icon__fill { fill: #594e78 }</style>
+      </defs>
+      <rect id="Rectangle_9" width="44.9" height="4" class="hamburger__icon__fill" data-name="Rectangle 9" rx="2" transform="translate(31.5 51)" 
+        [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}" />
+      <rect id="Rectangle_10" width="44.9" height="4" class="hamburger__icon__fill" data-name="Rectangle 10" rx="2" transform="translate(31.5 37)" 
+        [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}" />
+      <rect id="Rectangle_11" width="44.9" height="4" class="hamburger__icon__fill" data-name="Rectangle 11" rx="2" transform="translate(31.5 23)" 
+        [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}" />
+    </svg>
+
+    <svg class="logo__icon">
+      <path fill="#00ff9b" d="M150.3 65V22.2L193 65z" data-name="Path 1" transform="translate(-130 -7)" />
+      <path fill="#003eff" d="M193.1 65h-42.8L193 22.2z" data-name="Path 2" transform="translate(-130 -7)"/>
+      <text 
+        class="logo__text" 
+        fill="#432c85" 
+        font-family="SegoeUI-Semibold,Segoe UI" 
+        font-size="27" 
+        font-weight="600" 
+        letter-spacing=".1em" 
+        transform="translate(130 50)" 
+        [ngClass]="{'logo__text-dark': darkModeActive}"
+      >
+        <tspan x="0" y="0">Minimis</tspan>
+      </text>
+    </svg>
+  </div>
+
+  <h3 class="date__text" [ngClass]="{'date__text-dark': darkModeActive}">{{ today }}</h3>
+
+  <div class="mode-toggle__container">
+    <span class="mode-toggle__text" [ngClass]="{'mode-toggle__text-dark': darkModeActive}">Light</span>
+
+    <label class="toggle-button__container">
+      <input (click)='modeToggleSwitch()' type="checkbox" class="mode-toggle__input" />
+        <span [ngClass]="{'mode-toggle__bg-checked': darkModeActive}" class="mode-toggle__bg"></span>
+        <span [ngClass]="{'mode-toggle__circle-checked': darkModeActive}" class="mode-toggle__circle"></span>
+    </label>
+
+    <span class="mode-toggle__text" [ngClass]="{'mode-toggle__text-dark': darkModeActive}">Dark</span>
+  </div>
+</header>

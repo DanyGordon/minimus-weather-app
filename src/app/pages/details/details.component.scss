@@ -1,0 +1,539 @@
+@mixin backgroundOption {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
+.weather-details__wrapper {
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    position: relative;
+    background: -webkit-gradient(linear, left bottom, left top, from(#86dbff), to(#e0c3fc));
+    background: linear-gradient(to top,#86dbff 0,#e0c3fc 100%);
+    overflow: hidden;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &.weather-details__wrapper-dark {
+        background: -webkit-gradient(linear,left top,left bottom,from(#fc7db8),to(#495cfc));
+        background: linear-gradient(#fc7db8,#495cfc);
+    }
+
+    .background-gradient__circle {
+        position: absolute;
+        top: 15%;
+        right: 0%;
+        z-index: 1;
+        height: 100rem;
+        width: 100rem;
+        border-radius: 50%;
+        background: linear-gradient(-225deg,#fff 0,#ffe29f 10%,#ffa99f 48%,#ffd1ff 100%);
+        animation: scaleup-circle 900ms ease-in-out forwards;
+    
+        &.background-gradient__circle-dark {
+            background: -webkit-gradient(linear,left top,left bottom,from(#ff8b8b),to(#6676ff));
+            background: linear-gradient(to bottom,#ff8b8b,#6676ff);
+        }
+    }
+}
+
+.slider {
+    position: relative;
+    max-width: 64%;
+    height: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+}
+
+.slider-track {
+    min-width: 100%;
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 5;
+
+    transition: transform 200ms linear;
+}
+
+.weather-details__card {
+    max-width: 1152px;
+    width: 100%;
+    height: 100%;
+    margin: 0 32px;
+    background-color: #fff;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 9;
+    flex-shrink: 0;
+    
+    transition: transform 200ms linear;
+    animation: scaleup 1s ease-out 300ms, fadein 1.25s ease-out 300ms backwards;
+}
+
+.card-header__container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .city-illustration {
+        width: 100%;
+        height: 510px;
+        border-radius: 1rem 1rem 0 0;
+        position: relative;
+        -o-object-fit: cover;
+        object-fit: cover;
+        display: block;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .header-content__wrapper {
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(2,1fr);
+        width: 100%;
+        color: #fff;
+
+        .weather-today__container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 3fr 1fr;
+            grid-gap: 2rem;
+            justify-items: center;
+            align-self: center;
+            justify-self: center;
+
+            .temp-state__container {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+
+                .temp-state__current {
+                    font-size: 6rem;
+                    letter-spacing: .75rem;
+                }
+
+                .temp-state__condition {
+                    letter-spacing: .5rem;
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    margin-top: .25rem;
+                }
+            }
+
+            .weather-params__container {
+                display: flex;
+                align-items: center;
+                margin-left: -4rem;
+
+                .hum__container, .wind__container {
+                    display: flex;
+                    flex-flow: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .params__title {
+                        text-transform: uppercase;
+                        letter-spacing: .2rem;
+                        font-size: 1rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    .params__value {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .separator {
+                    margin: 0 2rem;
+                    height: 2.5rem;
+                    width: 2px;
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .city__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 25%;
+
+            .city-name__underline {
+                background: 0 0;
+                border-radius: 5px;
+                height: 5px;
+                box-shadow: 0 3rem 0 0 #fff;
+
+                .city-name {
+                    text-transform: uppercase;
+                    letter-spacing: .3rem;
+                    font-size: 1.75rem;
+                    padding-bottom: 2rem;
+                }
+            }
+        }
+    }
+}
+
+.card-body__container {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1.8fr;
+    column-gap: 1rem;
+    justify-content: center;
+    justify-items: center;
+    align-content: start;
+    align-items: start;
+    padding: 2rem;
+
+    .twitter-feed__container {
+        width: 100%;
+        margin-top: 1rem;
+
+        .twitter-feed__header {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 15% 50% 35%;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            
+            .twitter-feed__icon {
+                width: 2rem;
+            }
+
+            .twitter-feed__title {
+                color: #0c1066;
+                font-size: 1.25rem;
+            }
+
+            .twitter-feed__hashtag {
+                font-size: .85rem;
+                color: #5f84fb;
+                letter-spacing: .1rem;
+                text-transform: uppercase;
+            }
+        }
+
+        .twitter-feed__body {
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            flex-flow: column;
+            overflow-y: auto;
+            padding-left: 1rem;
+
+            &::-webkit-scrollbar {
+                width: 8px; /* ширина для вертикального скролла */
+                background-color: #c4c4c4;
+                border-radius: 12px;
+            }
+            
+            /* ползунок скроллбара */
+            &::-webkit-scrollbar-thumb {
+                background-color: #8a8a8a;
+                border-radius: 12px;
+            }
+            
+            /* &::-webkit-scrollbar-thumb:hover {
+                background-color: #253861;
+            } */
+        }
+    }
+
+    .forecast__container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: center;
+        margin-left: 1rem;
+
+        .day-weather__container {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 1.5rem;
+
+            .day-name__text {
+                font-size: 1.5rem;
+                color: #39437a;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: .5rem;
+            }
+
+            .forecast-condition__icon {
+                height: 3.5rem;
+            }
+
+            .day-temp__text {
+                font-size: 1.85rem;
+                color: #0c1066;
+                letter-spacing: .25rem;
+                margin: .75rem 0;
+                text-align: center;
+                padding-left: .35rem;
+            }
+
+            .day-state__text {
+                font-size: .65rem;
+                text-transform: uppercase;
+                letter-spacing: .2rem;
+                color: #2b244d;
+            }
+        }
+    }
+}
+
+.twitter__loader {
+    border: 3px solid hsla(185, 100%, 62%, 0.2);
+    border-top-color: #3cefff;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    animation: spin 1s linear infinite;
+    justify-self: center;
+    align-self: center;
+    margin-top: 3rem;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .twitter-no-tweets__text {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .twitter-tweet__container {
+    margin: 1rem .5rem 0 0;
+    padding: 6px;
+    border-radius: .75rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #80c3d380;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+  }
+  
+  .tweet-user__wrapper {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tweet-avatar__image {
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+  }
+  
+  .tweet-username__text {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .tweet__text {
+    margin-top: 0
+  }
+
+.weather-parameters__card {
+    max-width: 1152px;
+    width: 100%;
+    height: 797px;
+    margin: 0 32px;
+    background-color: #fff;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    transition: transform 200ms linear;
+    // animation: scaleup 1s ease-out 300ms, fadein 1.25s ease-out 300ms backwards;
+
+    app-histogram, app-line-chart, app-line-chart-press, app-weather-table {
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+    }
+
+    &.weather-parameters__card-dark {
+        background-color: #161b22;
+    }
+}
+
+.back__button {
+    width: 80px;
+    position: absolute;
+    top: 3.25rem;
+    left: 3rem;
+    cursor: pointer;
+    z-index: 6;
+    margin-top: 2rem;
+}
+
+.unsubscr__container {
+    width: 150px;
+    height: 90px;
+    position: absolute;
+    top: 4.25rem;
+    right: 3rem;
+    cursor: pointer;
+    z-index: 6;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.arrow {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline:0;
+}
+
+svg {
+    padding: 5px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    margin-left: -35px;
+    width: 70px;
+    height: 90px;
+    z-index: 19;
+}
+
+.left {
+    left: 10%;
+}
+
+.right {
+    right: 10%;
+}
+
+.left:hover polyline,
+.left:focus polyline {
+    stroke-width: 3;
+}
+
+.left:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+.right:hover polyline,
+.right:focus polyline {
+    stroke-width: 3;
+}
+
+.right:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+polyline {
+    // stroke: #00ff99;
+    stroke: #fff;
+    transition: all 250ms ease-in-out;
+}
+
+.popup-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 19;
+    background: #0c10667a;
+
+    transition: transform 200ms linear;
+    animation: fadein 1.5s ease-out 300ms backwards;
+}
+
+.popup-window {
+    width: 275px;
+    height: 210px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #c3fceb;
+    border-radius: .75rem;
+
+    transition: transform 200ms linear;
+    animation: bubble 1s ease-out 300ms forwards, fadeOut 1s ease-in 2300ms forwards;
+}
+
+.message {
+    margin: 10px 0;
+    width: 100%;
+
+    .text {
+        color: #0c1066;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+}
+
+.icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes bubble {
+    0% { transform: translateY(350%); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-350%); }
+}

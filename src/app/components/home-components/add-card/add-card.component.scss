@@ -1,0 +1,53 @@
+.add__card {
+    width: 344px;
+    max-width: 550.2px;
+    background-color: #fff;
+    border-radius: 28px;
+    padding: 2rem .8rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 2rem #0000ff1a;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 2rem #0000ff3f;
+    }
+
+    &.add__card-dark {
+        background: -webkit-gradient(linear,left top,left bottom,from(#711b86),to(#00057a));
+        background: linear-gradient(to bottom,#711b86,#00057a);
+        color: #fff;
+    }
+
+    .body__container {
+        align-self: flex-end;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        
+        .add__icon {
+            width: 10.5rem;
+            margin: 1.171rem 0;
+
+            .cls-299-dark {
+                fill: #711b86;
+            }
+        }
+
+        .city__illustration {
+            width: 20rem;
+        }
+    }
+}
+
+.card__title {
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-bottom: 1rem;
+}

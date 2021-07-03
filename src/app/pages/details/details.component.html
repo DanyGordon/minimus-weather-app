@@ -1,0 +1,253 @@
+<div class="weather-details__wrapper" [ngClass]="{'weather-details__wrapper-dark': darkModeActive}" *ngIf="forecastPrecipitation && forecastPress && forecastTemp">
+  <div class="background-gradient__circle" [ngClass]="{'background-gradient__circle-dark': darkModeActive}"></div>
+  
+  <svg class="back__button" routerLink="" viewBox="4085 152 98.5 126" tabindex="0">
+    <defs>
+      <style>.a {
+        fill: #2b244d;
+      }
+
+      .b {
+        fill: rgba(0, 0, 0, 0);
+      }
+
+      .b, .c {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .c {
+        fill: none;
+      }
+
+      .d {
+        fill: #fff;
+        font-size: 15px;
+        font-family: SegoeUI, Segoe UI, sans-serif;
+        letter-spacing: 0.4em;
+      }</style>
+    </defs>
+    <g transform="translate(3980)">
+      <circle class="a" cx="39" cy="39" r="39" transform="translate(105 152)"></circle>
+      <line class="b" transform="translate(123.5 190.5)" x1="80"></line>
+      <line class="b" transform="translate(123.5 164.5)" x2="26" y1="26"></line>
+      <line class="c" transform="translate(123.5 190.5)" x1="26" y1="27"></line>
+      <text class="d" transform="translate(117 274)">
+        <tspan x="0" y="0">BACK</tspan>
+      </text>
+    </g>
+  </svg>
+
+  <button class="arrow left" [disabled]="disable" (click)="slidingRight()">
+    <svg width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+      <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
+    </svg>
+  </button>
+  
+  <div class="slider" *ngIf="forecastPrecipitation && forecastPress && forecastTemp">
+    <div class="slider-container">
+      <div class="slider-track" #slider [ngStyle]="{'transform': 'translateX(' + $slidingValue + 'px)'}" slider [animationTime]="duration">
+
+        <section class="weather-details__card">
+          <section class="card-header__container" [ngClass]="{'card-header__container-dark': darkModeActive}">
+            <img src="./assets/images/{{ illustration }}.svg" alt="" class="city-illustration">
+            <div class="header-content__wrapper">
+              <div class="weather-today__container">
+                <div class="temp-state__container">
+                  <span class="temp-state__current">{{ currentTemp }}°</span>
+                  <span class="temp-state__condition">{{ condition }}</span>
+                </div>
+                <div class="weather-params__container">
+                  <div class="hum__container">
+                    <span class="params__title">Humidity</span>
+                    <span class="params__value">{{ humidity }}%</span>
+                  </div>
+                  <div class="separator"></div>
+                  <div class="wind__container">
+                    <span class="params__title">Wind</span>
+                    <span class="params__value">{{ wind }} K/M</span>
+                  </div>
+                </div>
+              </div>
+              <div class="city__container">
+                <div class="city-name__underline">
+                  <span class="city-name">{{ city }}</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <main class="card-body__container">
+            <section class="twitter-feed__container">
+              <div class="twitter-feed__header">
+                <svg class="twitter-feed__icon" viewBox="4332 625.812 30 24.375">
+                  <defs>
+                    <style>
+                      .twitter-icon-fill { fill: #03a9f4; }
+                    </style>
+                  </defs>
+                  <path class="twitter-icon-fill" d="M30,50.886a12.823,12.823,0,0,1-3.544.971,6.116,6.116,0,0,0,2.706-3.4,12.291,12.291,0,0,1-3.9,1.489,6.15,6.15,0,0,0-10.639,4.206,6.333,6.333,0,0,0,.143,1.4A17.408,17.408,0,0,1,2.089,49.121a6.152,6.152,0,0,0,1.89,8.22A6.074,6.074,0,0,1,1.2,56.584v.067a6.179,6.179,0,0,0,4.928,6.043,6.139,6.139,0,0,1-1.613.2,5.439,5.439,0,0,1-1.164-.1A6.209,6.209,0,0,0,9.1,67.076,12.358,12.358,0,0,1,1.472,69.7,11.521,11.521,0,0,1,0,69.615a17.315,17.315,0,0,0,9.435,2.76c11.318,0,17.505-9.375,17.505-17.5,0-.272-.009-.534-.023-.8A12.269,12.269,0,0,0,30,50.886Z" transform="translate(4332 577.812)"></path>
+                </svg>
+                <span class="twitter-feed__title">Twitter Feed</span>
+                <span class="twitter-feed__hashtag">#{{ city | uppercase }}</span>
+              </div>
+              <div class="twitter-feed__body">
+                <ng-container *ngIf="tweets$ | async as tweets; else loadingTweets">
+                  <p *ngIf="(tweets && !tweets.length) || !tweets" class="twitter-no-tweets__text">No Tweets Found</p>
+                  <div class="twitter-tweet__container" *ngFor="let tweet of tweets" title="View more in Twitter.">
+                    <a [href]="tweet.url" target="_blank">
+                      <div class="tweet-user__wrapper">
+                        <img [src]="tweet.user.photo" alt="avatar" class="tweet-avatar__image">
+                        <div>
+                          <span class="tweet-username__text">{{tweet.user.name}}</span>
+                          <span class="tweet-handle__text">{{tweet.user.handle}}</span>
+                        </div>
+                      </div>
+                      <p class="tweet__text">{{tweet.text}}</p>
+                    </a>
+                  </div>
+                </ng-container>
+      
+                <ng-template #loadingTweets>
+                  <div class="twitter__loader"></div>
+                </ng-template>
+              </div>
+            </section>
+            <section class="forecast__container">
+              <div class="day-weather__container" *ngFor="let day of forecastCondition">
+                <span class="day-name__text">{{ day.time | date: 'EEE' }}</span>
+                <svg class="forecast-condition__icon" viewBox="2436.9 -843.1 275.5 274.1">
+                  <g data-name="cloudy icon" transform="translate(84 790)">
+                    <circle cx="137" cy="137" data-name="Ellipse 23" fill="#fff" r="137" transform="translate(2354 -1633)"></circle>
+                    <path d="M2523.4-1361.5a37.2 37.2 0 0 0 8.4-23.4c0-22-19.8-40-44.1-40l-3.4.1h-.5a39.8 39.8 0 0 0-39.4-33.7 40.1 40.1 0 0 0-10 1.2 40 40 0 0 0-35.2-21.2 40.1 40.1 0 0 0-38.5 29 137.4 137.4 0 0 1-7.8-45.8 138.8 138.8 0 0 1 2.8-27.8 137 137 0 0 1 8-25.8 137.8 137.8 0 0 1 12.7-23.4 138.8 138.8 0 0 1 16.8-20.4 138.8 138.8 0 0 1 20.4-16.9 137.8 137.8 0 0 1 23.4-12.7 137 137 0 0 1 25.9-8 138.8 138.8 0 0 1 27.7-2.8 138.8 138.8 0 0 1 27.8 2.8 137 137 0 0 1 25.9 8 137.8 137.8 0 0 1 23.4 12.7 138.8 138.8 0 0 1 20.4 16.9 138.7 138.7 0 0 1 16.8 20.4 137.8 137.8 0 0 1 12.7 23.4 137 137 0 0 1 8 25.8 138.8 138.8 0 0 1 2.8 27.8 137.4 137.4 0 0 1-8 46.1 137.2 137.2 0 0 1-21.9 39.6 138.2 138.2 0 0 1-33.2 30.1 136.8 136.8 0 0 1-41.9 18z" data-name="Subtraction 1" fill="#ffde17"></path>
+                  </g>
+                </svg>
+                <span class="day-temp__text">{{ day.temp }}°</span>
+                <span class="day-state__text">{{ day.condition }}</span>
+              </div>
+            </section>
+          </main>
+        </section>
+
+        <section class="weather-parameters__card temperature">
+          <app-line-chart *ngIf="forecastTemp && forecastTemp.length" [forecastParams]="forecastTemp" [city]="city" [visibility]="tempChartVisibility" [content]="chartTemperature"></app-line-chart>
+        </section>
+        
+        <section class="weather-parameters__card pressure">
+          <app-line-chart *ngIf="forecastPress && forecastPress.length" [forecastParams]="forecastPress" [city]="city" [visibility]="pressChartVisibility" [content]="chartPressure"></app-line-chart>
+        </section>
+        
+        <section class="weather-parameters__card table">
+          <app-weather-table
+            *ngIf="forecastPrecipitation && forecastPrecipitation.length 
+              && forecastWind && forecastWind.length 
+              && forecastHumidity && forecastHumidity.length
+              && forecastMinMaxTemp && forecastMinMaxTemp.length"
+            [city]="city"
+            [visibility]="weatherTableVisibility"
+            [forecastPrecipitation]="forecastPrecipitation"
+            [forecastWind]="forecastWind"
+            [forecastHumidity]="forecastHumidity"
+            [forecastConditionAndTemp]="forecastMinMaxTemp"
+          ></app-weather-table>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <button class="arrow right" [disabled]="disable" (click)="slidingLeft()">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+      <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "/>
+    </svg>
+  </button>
+
+
+  <svg *ngIf="isSubscribed" class="unsubscr__container" (click)="unsubFromCity()" viewBox="4085 152 98.5 126" tabindex="0">
+    <defs>
+      <style>.a {
+        fill: #2b244d;
+      }
+
+      .b {
+        fill: rgba(0, 0, 0, 0);
+      }
+
+      .b, .c {
+        stroke: #fff;
+        stroke-width: 4px;
+      }
+
+      .c {
+        fill: none;
+      }
+
+      .d {
+        fill: #fff;
+        font-size: 18px;
+        font-family: SegoeUI, Segoe UI, sans-serif;
+        letter-spacing: 0.4em;
+      }</style>
+    </defs>
+    <g transform="translate(3980)">
+      <circle class="a" cx="39" cy="39" r="39" transform="translate(105 152)"></circle>
+      <line transform="translate(105.5 152.5)" x1="0" y1="0" x2="80" y2="75" class="b"></line>
+      <line transform="translate(105.5 152.5)" x1="0" y1="75" x2="80" y2="0" class="c"></line>
+      <text class="d" transform="translate(75 274)">
+        <tspan x="0" y="0">UNSUBSCRIBE</tspan>
+      </text>
+    </g>
+  </svg>
+
+  <svg *ngIf="!isSubscribed" class="unsubscr__container" (click)="subOnCity()" viewBox="4085 152 98.5 126" tabindex="0">
+    <defs>
+      <style>.a {
+        fill: #2b244d;
+      }
+
+      .b {
+        fill: rgba(0, 0, 0, 0);
+      }
+
+      .b, .c {
+        stroke: #fff;
+        stroke-width: 4px;
+      }
+
+      .c {
+        fill: none;
+      }
+
+      .d {
+        fill: #fff;
+        font-size: 18px;
+        font-family: SegoeUI, Segoe UI, sans-serif;
+        letter-spacing: 0.4em;
+      }</style>
+    </defs>
+    <g transform="translate(3980)">
+      <circle class="a" cx="39" cy="39" r="39" transform="translate(105 152)"></circle>
+      <line transform="translate(105.5 151)" x1="70" y1="40" x2="10" y2="40" class="b"></line>
+      <line transform="translate(105.5 151)" x1="40" y1="70" x2="40" y2="10" class="c"></line>
+      <text class="d" transform="translate(75 274)">
+        <tspan x="0" y="0">SUBSCRIBE</tspan>
+      </text>
+    </g>
+  </svg>
+</div>
+
+<div *ngIf="operation" class="popup-layout">
+  <div class="popup-window">
+    <div class="message">
+      <p class="text">{{ city }} has been successfully {{ operation }}!</p>
+    </div>
+    <div class="icon">
+      <svg viewBox="0 0 50 50" height="5rem">
+        <circle cx="25" cy="25" r="25" fill="#25ae88"/>
+        <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+          stroke-width="2"
+          d="M38 15L22 33l-10-8"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

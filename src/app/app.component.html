@@ -1,0 +1,11 @@
+<app-sidebar *ngIf="auth" [auth]="auth" (authChanged)="authChangedHandler($event)"></app-sidebar>
+
+<div class="root__container">
+  <app-header [auth]="auth"></app-header>
+
+  <main class="main__container">
+    <div class="main-container__bg" [ngClass]="{'main-container__bg-dark': darkModeActive}">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

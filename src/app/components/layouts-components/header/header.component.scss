@@ -1,0 +1,128 @@
+.main__header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 6px 0px #cacaca;
+    z-index: 9;
+    background-color: #fff;
+
+    &.main__header-dark {
+      background-color: #2B244D;
+      box-shadow: 1px 1px 6px 0px #333333;
+    }
+}
+
+.left__section {
+    display: flex;
+    max-width: 400px;
+}
+
+.logo__icon {
+    height: 5rem;
+    flex: 0 1 17.5rem;
+    margin-left: 1rem;    
+}
+
+.logo__text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    fill: #2B244D;
+
+    &.logo__text-dark {
+      fill: #ffff;
+    }
+}
+
+.hamburger__icon {
+    position: relative;
+    height: 4rem;
+    flex: 0 0 7rem;
+    margin-left: 1rem;
+    z-index: 199;
+}
+
+.hamburger__icon__fill {
+    fill: #2B244D;
+}
+
+.hamburger__icon__fill-dark {
+    fill: #ffff;
+}
+
+.date__text {
+    max-width: 500px;
+    flex: 1 0 100%;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    display: block;
+    margin: 1rem auto;
+
+    &.date__text-dark {
+      color: #fff;
+    }
+}
+
+.mode-toggle__container {
+    max-width: 135px;
+    flex: 0 0 100%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.toggle-button__container {
+    cursor: pointer;
+    position: relative;
+    margin: 0 0.5rem;    
+}
+
+.mode-toggle__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+.mode-toggle__bg {
+    height: 1rem;
+    width: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    transition: background-color 300ms linear;
+}
+
+.mode-toggle__bg-checked {
+    background-color: #FF0070;
+}
+
+.mode-toggle__circle {
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 1rem;
+    background-color: #2B244D;
+    display: inline-block;
+    position: absolute;
+    top: -0.2rem;
+    box-shadow: 0 0 0 rgba(0, 0, 255, 0.5);
+    transition: left 300ms linear;
+    left: -0.1rem;
+}
+
+.mode-toggle__circle-checked {
+    background-color: white;
+    left: 1rem;
+}
+
+.mode-toggle__text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+
+    &.mode-toggle__text-dark {
+      color: #fff;
+    }
+}

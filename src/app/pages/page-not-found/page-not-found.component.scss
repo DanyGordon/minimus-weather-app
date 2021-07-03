@@ -1,0 +1,103 @@
+.not-found__wrapper {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;;
+}
+
+.card {
+    position: absolute;
+    top: 100px;
+    left: 5%;
+    width: 450px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 1px 1px 34px 0px #9b9b9b;
+
+    &.card-dark {
+        background-color: #a95eff;
+        box-shadow: 0px 0px 4px 0px #9b9b9b;
+    }
+}
+
+.card-header {
+    padding: 4rem 2rem 2rem;
+    height: 60%;
+    background-color: #3814ff;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+
+    h1 {
+        color: #ffffff;
+        margin-left: 25px;
+    }
+
+    &.card-header__dark {
+        background-color: #2b244d;
+    }
+}
+
+.card-inner {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    width: 70%;
+    height: 60%;
+    // padding: 1rem;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 10%;
+    left: 15%;
+    background-color: #fff;
+    box-shadow: 0px 0px 24px 0px #cccccc;
+
+    p {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: .9rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        color: #797979;
+        padding: .9rem;
+    }
+
+    a, span {
+        color: #1976d2;
+    }
+
+    &.card-inner__dark {
+        box-shadow: 0px 0px 6px 0px #cccccc;
+
+        a, span {
+            color: #57323f;
+        }
+    }
+
+}
+
+.header {
+    background-color: #1976d2;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+
+    &.header-dark {
+        background-color: #57323f;
+    }
+}
+
+.back__button {
+    width: 80px;
+    cursor: pointer;
+    z-index: 6;
+    margin-top: 1rem;
+}

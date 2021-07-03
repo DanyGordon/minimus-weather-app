@@ -1,0 +1,227 @@
+.add-page__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+
+  .back__button {
+    width: 80px;
+    position: absolute;
+    top: 3.25rem;
+    left: 3rem;
+    cursor: pointer;
+    z-index: 6;
+    margin-top: 2rem;
+  }
+
+  .main-card {
+    height: 90vh;
+    width: 75%;
+    display: flex;
+    border-radius: 1rem;
+    background-color: #fff;
+    animation: scaleup 1s ease-out 300ms, fadein 1.25s ease-out 300ms backwards;
+
+    .city-search__wrapper {
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      flex: 1 1;
+      overflow-y: auto;
+
+      .city-search__header {
+        width: 100%;
+        min-height: 23%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
+            
+        .city-search__title {
+          color: #0c1066;
+          margin: 2rem 0 2rem;
+        }
+
+        .city-search__input-wrapper {
+          position: relative;
+          width: 80%;
+
+          .search-city__input {
+            width: 100%;
+            padding: 1.5rem;
+            border-radius: 3rem;
+            outline: 0;
+            border: none;
+            box-shadow: 0 0 2rem 0.15rem rgb(0 0 255 / 10%);
+            font-size: 1rem;
+            color: #131f69;
+            text-transform: uppercase;
+          }
+
+          .search-city__btn {
+            cursor: pointer;
+            position: absolute;
+            background-color: #31feae;
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            right: 0;
+            top: -.35rem;
+            outline: 0;
+            border: none;
+            z-index: 5;
+            box-shadow: 0 0 2rem 0.15rem rgb(0 0 255 / 10%);
+
+            .search-city__icon {
+              height: 50%;
+              width: 50%;
+            }
+          }
+        }
+
+        .city-search__hr {
+          word-spacing: 1rem;
+          margin: 2rem;
+        }
+      }
+
+      .city-search__body {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .fav-city__wrapper {
+      position: relative;
+      height: 100%;
+      flex: 1.5 1.5;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+      overflow: hidden;
+
+      .fav-city__image {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 0 1rem 1rem 0;
+        background-image: url('https://sofitel.accor.com/destinations/imagerie/roma-overview-1400x788-1-c962_1400x788.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+
+      .fav-city__overlay {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 0 1rem 1rem 0;
+        background: #2b244d80;
+      }
+
+      .fav-city__header {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        color: #fff;
+
+        .fav-city__title {
+          margin-bottom: .5rem;
+          margin-top: 1rem;
+        }
+
+        .fav-city__hr {
+          width: 3rem;
+        }
+
+        .fav-city__date {
+          margin-top: .5rem;
+        }
+      }
+
+      .fav-city__body {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        color: #fff;
+
+        .fav-city__subwrapper {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-around;
+
+          .fav-weather__icon {
+            width: 7rem;
+            margin-bottom: 4rem;
+          }
+
+          .fav-weather__info {
+            display: flex;
+            flex-flow: column;
+            text-align: center;
+            margin-top: -2rem;
+
+            .fav-city__temp {
+              font-size: 5rem;
+              text-align: center;
+            }
+
+            .fav-city__name-wrapper {
+              margin-bottom: 2rem;
+
+              .fav-city__name {
+                font-size: 2rem;
+                letter-spacing: .1rem;
+              }
+
+              .fav-city__country {
+                text-transform: uppercase;
+                margin-left: .75rem;
+              }
+            }
+
+            .fav-city__state {
+              font-size: 1rem;
+              text-transform: uppercase;
+              letter-spacing: .5rem;
+              margin-bottom: 2rem;
+            }
+          }
+
+          .fav-city__add-btn {
+            cursor: pointer;
+            outline: 0;
+            margin-bottom: 2rem;
+            border: 2px solid #fff;
+            border-radius: 3rem;
+            padding: 1.25rem 2rem;
+            background-color: transparent;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+
+            &:hover {
+              background-color: rgba(255,255,255,.2)
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.city-search__title, .fav-city__title {
+  text-transform: uppercase;
+  font-size: 1.85rem;
+  letter-spacing: .1rem;
+  word-break: break-all;
+}

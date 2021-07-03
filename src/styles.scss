@@ -1,0 +1,184 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Reforma2018-Negra';
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.toast-notification__container {
+  width: 450px;
+  position: fixed;
+  top: -85px;
+  left: 25px;
+  background-color: #fff;
+  border: 1px solid #2b244d;
+  border-radius: .25rem;
+  padding: .75rem;
+  z-index: 199;
+
+  animation: toastFadein 800ms linear 300ms forwards;
+}
+
+.toast-notification__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .25rem;
+}
+
+.toast-notification__message {
+  padding: .2rem;
+  max-width: 80%;
+  font-size: 1.2rem;
+}
+
+.toast-notification__controller {
+  max-width: 100px;
+  width: 100%;
+  align-self: flex-end;
+
+  button {
+    width: 100%;
+    padding: .25rem;
+    border: 2px solid #ffffff;
+    background: transparent;
+    color: #2b244d;
+    cursor: pointer;
+    font-weight: 700;
+
+    &:hover {
+      background-color: #2b244d4b;
+    }
+  }
+}
+
+.fadeOut { 
+  top: 85px;
+  animation: toastFadeOut 800ms linear 300ms forwards;
+}
+
+.ngui-auto-complete > ul {
+  box-shadow: 0 0 2rem rgba(0, 0, 255, 0.3) !important;
+  border: none !important;
+  border-radius: 1rem;
+}
+
+.ngui-auto-complete .item {
+  padding: 1rem !important;
+  cursor: pointer;
+}
+
+.ngui-auto-complete .item:hover {
+  background-color: rgba(0, 0, 255, 0.1) !important;
+}
+
+@keyframes toastFadein {
+  0% {
+    top: -85px;
+    opacity: 0;
+  }
+  50% {
+    top: 0;
+    opacity: .5;
+  }
+  100% {
+    top: 85px;
+    opacity: 1;
+  }
+}
+
+@keyframes toastFadeOut {
+  0% {
+    top: 85px;
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    opacity: .5;
+  }
+  100% {
+    top: -85px;
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  
+@keyframes slidedown {
+  from {
+    transform: translateY(-25%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+  
+@keyframes slideup {
+  from {
+    transform: translateY(50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+  
+@keyframes slideright {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+  
+@keyframes scaleup {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+  
+@keyframes scaleup-circle {
+  from {
+    transform-origin: top;
+    transform: scale(0) translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform-origin: center;
+    transform: scale(1) translateY(-50%) rotate(360deg);
+  }
+}
+
+@font-face {
+  font-family: 'Reforma1969-Negra';
+  src: url(./assets/fonts/Reforma1969-Negra.woff)format('.woff');
+}
+
+@font-face {
+  font-family: 'Reforma2018-Blanca';
+  src: url(./assets/fonts/Reforma2018-Blanca.woff)format('.woff');
+}
+
+@font-face {
+  font-family: 'Reforma2018-Negra';
+  src: url(./assets/fonts/Reforma2018-Negra.woff)format('.woff');
+}

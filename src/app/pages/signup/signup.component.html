@@ -1,0 +1,73 @@
+<div class="signup-page__wrapper">
+  <div class="signup-card__container">
+    <main class="signup-card__content">
+      <span class="signup-header__text">Signup</span>
+      <form class="signup-card__form" (ngSubmit)="register($event)" #authform="ngForm">
+        <input
+          ngModel
+          autofocus
+          type="text" 
+          name="firstname" 
+          placeholder="Firstname" 
+          class="signup-form__input"
+          required
+        >
+        <input
+          ngModel
+          autofocus
+          type="text" 
+          name="lastname" 
+          placeholder="Lastname" 
+          class="signup-form__input"
+          required
+        >
+        <input
+          ngModel
+          autofocus
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          class="signup-form__input"
+          required
+        >
+        <input
+          ngModel
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          class="signup-form__input"
+          minlength="6"
+          required
+        >
+        <input 
+          type="submit" 
+          name="submit" 
+          value="Signup" 
+          class="signup-btn__submit"
+          [class.btn-disabled]="!authform.form.valid"
+          [disabled]="!authform.form.valid"
+        >
+      </form>
+      <div class="login-link__wrapper">
+        <span class="login-notice__text">Already have an account?</span>
+        <a class="login__link" routerLink="/login" href="/login">Login</a>
+      </div>
+    </main>
+    <aside class="signup-card__aside">
+      <div class="signup-aside__overlay"></div>
+      <h1 class="signup-welcome__text">Join Minimus Today!</h1>
+      <hr class="signup-aside__underline">
+    </aside>
+  </div>
+
+  <div *ngIf="isMessage" class="toast-notification__container">
+    <div class="toast-notification__main">
+      <div class="toast-notification__message">
+        <p>[Error: {{ errorMessage.statusCode }}]: {{ errorMessage.message }}</p>
+      </div>
+      <div class="toast-notification__controller">
+        <button (click)="hideToast()">ОК</button>
+      </div>
+    </div>
+  </div>
+</div>

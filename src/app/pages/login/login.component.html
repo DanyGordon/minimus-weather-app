@@ -1,0 +1,55 @@
+<div class="login-page__wrapper">
+  <div class="login-card__container">
+    <main class="login-card__content">
+      <span class="login-header__text">Login</span>
+      <form class="login-card__form" (ngSubmit)="login($event)" #authform="ngForm">
+        <input 
+          ngModel 
+          type="email" 
+          autofocus 
+          name="email" 
+          placeholder="Email" 
+          class="login-form__input" 
+          required
+        >
+        <input 
+          ngModel 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          class="login-form__input" 
+          required
+          minlength="6"
+        >
+        <input 
+          type="submit" 
+          name="submit" 
+          value="Login" 
+          class="login-btn__submit"
+          [class.btn-disabled]="!authform.form.valid"
+          [disabled]="!authform.form.valid"
+        >
+      </form>
+      <div class="signup-link__wrapper">
+        <span class="signup-notice__text">Don't have an account?</span>
+        <a class="signup__link" routerLink="/signup" href="/signup">Sign Up</a>
+      </div>
+    </main>
+    <aside class="login-card__aside">
+      <div class="login-aside__overlay"></div>
+      <h1 class="login-welcome__text">Welcome Back!</h1>
+      <hr class="login-aside__underline">
+    </aside>
+  </div>
+  
+  <div *ngIf="isMessage" class="toast-notification__container" [ngClass]="{ 'fadeOut': isFadedOut }">
+    <div class="toast-notification__main">
+      <div class="toast-notification__message">
+        <p>[Error: {{ errorMessage.statusCode }}]: {{ errorMessage.message }}</p>
+      </div>
+      <div class="toast-notification__controller">
+        <button (click)="hideToast()">ОК</button>
+      </div>
+    </div>
+  </div>
+</div>

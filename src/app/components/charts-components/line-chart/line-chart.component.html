@@ -1,0 +1,50 @@
+<svg #chart id="lineChart" class="lineChart" [ngClass]="{ 'chart-dark': darkModeActive }" chart [params]="chartTemp" [visibility]="visibility">
+    <style>
+        .grid-vertical path,
+        .grid-horizontal path {
+            stroke-width: 0;
+        }
+          
+        .grid-vertical .tick line,
+        .grid-horizontal .tick line {
+            stroke: #9FAAAE;
+            stroke-opacity: 0.3;
+        }
+        
+        text.label, text.title {
+            font-family: sans-serif;
+            font-size: 1rem;
+            fill: #39437a;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .tick text {
+            fill: #2B244D;
+            font-style: italic;
+            
+        }
+        .dot {
+            fill: #1d0981;
+            cursor: pointer;
+        }
+    </style>
+    <defs>
+        <filter id="shadow" class="shadow">
+            <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#2F319C"></feDropShadow>
+        </filter>
+        <filter id="neon">
+            <feFlood flood-color="#2F319C" flood-opacity="0.6" in="SourceGraphic" />
+            <feComposite operator="in" in2="SourceGraphic" />
+            <feGaussianBlur stdDeviation="5" />
+            <feComponentTransfer result="glow1">
+              <feFuncA type="linear" slope="4" intercept="0" />
+            </feComponentTransfer>
+            <feMerge>
+               <feMergeNode in="glow1" />
+               <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+    </defs>
+</svg>
+
+<div class="chart__tooltip" style="visibility: hidden;"></div>

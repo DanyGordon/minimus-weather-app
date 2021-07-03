@@ -1,0 +1,86 @@
+.slider {
+    max-width: 1632px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    overflow-x: hidden;
+    
+    animation: slideup 1s ease-in-out, fadein 1.25s ease-in-out 0s 1;
+}
+
+.slider-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    transition: transform 200ms linear;
+}
+
+.main__container {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    transition: transform 200ms linear;
+}
+
+.slide {
+    transition: transform 200ms linear;
+    width: 408px;
+}
+
+button {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline:0;
+}
+
+svg {
+    padding: 5px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    margin-left: -35px;
+    width: 70px;
+    height: 90px;
+}
+
+.left {
+    left: 3%;
+}
+
+.right {
+    right: 3%;
+}
+
+.left:hover polyline,
+.left:focus polyline {
+    stroke-width: 3;
+}
+
+.left:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+.right:hover polyline,
+.right:focus polyline {
+    stroke-width: 3;
+}
+
+.right:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+polyline {
+    // stroke: #00ff99;
+    stroke: #fff;
+    transition: all 250ms ease-in-out;
+}

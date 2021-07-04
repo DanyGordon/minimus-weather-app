@@ -17,7 +17,7 @@ export class AuthenticationController {
     const result = await this.authService.login(req.user);
     response.cookie('jwt_token', result.access_token, {
       expires: new Date(Date.now() + 16 * 3600000),
-      domain: 'localhost.com',
+      domain: 'localhost',
       path: '/',
       httpOnly: true,
       sameSite: 'lax'
